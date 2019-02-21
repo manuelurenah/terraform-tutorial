@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "neka" {
   ami                    = "ami-2d39803a"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = ["${aws_security_group.instance.id}"]
+  vpc_security_group_ids = ["${aws_security_group.nofi.id}"]
 
   user_data = <<-EOF
               #!/bin/bash
@@ -18,8 +18,8 @@ resource "aws_instance" "neka" {
   }
 }
 
-resource "aws_security_group" "instance" {
-  name = "terraform-neka-instance"
+resource "aws_security_group" "nofi" {
+  name = "terraform-nofi-instance"
 
   ingress {
     from_port   = "${var.server_port}"
